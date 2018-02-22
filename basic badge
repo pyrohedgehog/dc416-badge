@@ -1,0 +1,46 @@
+//some arduino code that SHOULD read the input from another board, and output a basic header when the button is pressed
+int lredPin = 5,lgreenPin = 6,lbluePin = 7  ,rredPin=2,rgreenPin=3,rbluePin=4;//the pin number
+int r=50, g=0,b=0;//the user pin
+
+void setup()
+{
+  pinMode(lredPin, OUTPUT);
+  pinMode(lgreenPin, OUTPUT);
+  pinMode(lbluePin, OUTPUT);  //^^^left eye things
+  pinMode(rredPin, OUTPUT);//vvv these are the right eye things
+  pinMode(rgreenPin, OUTPUT);
+  pinMode(rbluePin, OUTPUT);      
+}
+
+
+void loop()
+{
+  for(int b=0;b>254;b++){
+  for(int a=0;a>254;a++){
+ for(int i=0;i>254;i++){
+   setColour(b,a,i);
+   delay(10);
+ }}}  
+ 
+ 
+}//end of void loop
+
+
+
+
+
+void setColour(int red, int green, int blue)
+{
+  red = 255 - red;
+  green = 255 - green;
+  blue = 255 - blue;
+  analogWrite(lredPin, red);
+  analogWrite(lgreenPin, green);
+  analogWrite(lbluePin, blue);//^^^left eye  output
+  
+  analogWrite(rredPin, red);//vvvright eye output
+  analogWrite(rgreenPin, green);
+  analogWrite(rbluePin, blue);   
+  
+  
+}
